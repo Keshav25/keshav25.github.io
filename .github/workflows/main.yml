@@ -1,2 +1,11 @@
-              - name: Org Knit
-                uses: tecosaur/org-knit-action@v0.3
+name: Build and Deploy
+on: [push]
+permissions:
+  contents: write
+  jobs:
+    build-and-deploy:
+      concurrency: ci-${{ github.ref }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Org Knit
+          uses: tecosaur/org-knit-action@v0.3
